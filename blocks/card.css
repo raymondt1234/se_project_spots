@@ -39,6 +39,11 @@
   background-repeat: no-repeat;
 }
 
+.card__like-btn:hover {
+  cursor: pointer;
+  border: 1px solid #9747FF;
+}
+
 @media screen and (max-width: 627px) {
   .card__image {
     width: 288px;
