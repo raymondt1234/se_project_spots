@@ -43,10 +43,13 @@
 .card__like-btn:hover {
   cursor: pointer;
   opacity: 100%;
-  border: 1px solid #9747FF;
 }
 
 @media screen and (max-width: 627px) {
+  .card {
+    margin: 0;
+  }
+
   .card__image {
     width: 288px;
     height: 288px;
