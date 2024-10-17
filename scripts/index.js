@@ -50,7 +50,6 @@ const newPostLink = newPostModal.querySelector("#add-card-link-input");
 const newPostName = newPostModal.querySelector("#add-card-name-input");
 const newPostFormElement = newPostModal.querySelector(".modal__form");
 
-
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
