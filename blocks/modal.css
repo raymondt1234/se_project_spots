@@ -144,6 +144,15 @@
     right: 12px;
   }
 
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right: 0;
+  }
+
+  .modal__image {
+    border-radius: 4px;
+  }
+
   .modal__title {
     padding: 0;
     margin: 10px 0 24px;
