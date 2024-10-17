@@ -35,11 +35,21 @@
   padding: 0;
 }
 
+.modal__caption {
+  margin: 0;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #fff;
+  background-color: #212121;
+}
+
 .modal__image {
   max-width: 80vw;
   max-height: 80vh;
   object-fit: contain;
-  width: 100%
+  width: 100%;
 }
 
 .modal__close-btn {
