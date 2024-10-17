@@ -33,10 +33,18 @@
 
 .modal__content_type_preview {
   padding: 0;
+  width: auto;
 }
 
 .modal__caption {
   margin: 0;
+  padding: 0;
+  padding: 4px 8px;
+  height: 32px;
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  border-radius: 8px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
@@ -50,6 +58,7 @@
   max-height: 80vh;
   object-fit: contain;
   width: 100%;
+  border-radius: 8px;
 }
 
 .modal__close-btn {
