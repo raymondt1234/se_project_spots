@@ -38,7 +38,7 @@ const editModal = document.querySelector("#edit-profile-modal");
 const editModalCloseBtn = editModal.querySelector(".modal__close-btn");
 const profileModalName = editModal.querySelector("#profile-name-input");
 const profileModalDescription = editModal.querySelector("#profile-description-input");
-const profileFormElement = editModal.querySelector(".modal__form");
+const profileFormElement = document.forms["edit-profile"];
 
 // New Post Button
 const newPostButton = document.querySelector(".profile__add-btn");
@@ -48,13 +48,15 @@ const newPostModal = document.querySelector("#add-card-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostLink = newPostModal.querySelector("#add-card-link-input");
 const newPostName = newPostModal.querySelector("#add-card-name-input");
-const newPostFormElement = newPostModal.querySelector(".modal__form");
+const newPostFormElement = document.forms["edit-card"];
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
 // Preview Modal
 const previewModal = document.querySelector("#preview-modal");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+const previewModalImage = previewModal.querySelector(".modal__image");
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 
 function getCardElement(data) {
@@ -62,6 +64,7 @@ function getCardElement(data) {
 
   const cardNameElement = cardElement.querySelector(".card__title");
   const cardImageElement = cardElement.querySelector(".card__image");
+
   cardNameElement.textContent = data.name;
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
@@ -83,9 +86,6 @@ function handleLiked(event) {
 
 function handleOpenPreview(event) {
   const previewImage = event.target;
-  const previewModal = document.querySelector("#preview-modal");
-  const previewModalCaption = previewModal.querySelector(".modal__caption");
-  const previewModalImage = previewModal.querySelector(".modal__image");
 
   previewModalImage.src = previewImage.src;
   previewModalImage.alt = previewImage.alt;
@@ -122,7 +122,15 @@ function handleNewPostFormSubmit(event) {
   const newPostCard = getCardElement(card);
   cardsList.prepend(newPostCard);
 
+  event.target.reset();
+
   closeModal(newPostModal);
+}
+
+function renderCard(item, method = "prepend") {
+
+  const cardElement = getCardElement(item);
+  cardsList[ method ](cardElement);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -153,6 +161,6 @@ previewModalCloseBtn.addEventListener("click", () => {
 
 // create initial cards
 initialCards.forEach(card => {
-  const cardElement = getCardElement(card);
-  cardsList.prepend(cardElement);
+  renderCard(card);
 });
+
