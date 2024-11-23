@@ -46,6 +46,7 @@ const newPostButton = document.querySelector(".profile__add-btn");
 // New Post Modal
 const newPostModal = document.querySelector("#add-card-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
+const newPostSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 const newPostLink = newPostModal.querySelector("#add-card-link-input");
 const newPostName = newPostModal.querySelector("#add-card-name-input");
 const newPostFormElement = document.forms["edit-card"];
@@ -122,6 +123,7 @@ function handleNewPostFormSubmit(event) {
   const newPostCard = getCardElement(card);
   cardsList.prepend(newPostCard);
 
+  disableButton(newPostSubmitBtn, true);
   event.target.reset();
 
   closeModal(newPostModal);
@@ -136,6 +138,8 @@ function renderCard(item, method = "prepend") {
 profileEditButton.addEventListener("click", () => {
   profileModalName.value = profileName.textContent;
   profileModalDescription.value = profileDescription.textContent;
+
+  resetValidation(editModal, [profileModalName, profileModalDescription]);
   openModal(editModal);
 });
 

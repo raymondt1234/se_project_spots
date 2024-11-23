@@ -26,14 +26,28 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
+const disableButton = (buttonElement, disable) => {
+  if(disable) {
+    buttonElement.disabled = disable;
     buttonElement.classList.add("modal__submit-btn_disabled");
   } else {
     buttonElement.disabled = false;
     buttonElement.classList.remove("modal__submit-btn_disabled");
   }
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    disableButton(buttonElement, true);
+  } else {
+    disableButton(buttonElement, false);
+  }
+};
+
+const resetValidation = (formElement, inputList) => {
+  inputList.forEach(input => {
+    hideInputError(formElement, input);
+  });
 };
 
 const setEventListeners = (formElement) => {
