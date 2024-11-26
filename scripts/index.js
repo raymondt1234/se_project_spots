@@ -96,6 +96,11 @@ function handleOpenPreview(event) {
 }
 
 function openModal (modal) {
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeModal(modal);
+    }
+  }, {once: true});
   modal.classList.add("modal_opened");
 };
 
