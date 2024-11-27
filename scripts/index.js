@@ -101,11 +101,13 @@ function openModal (modal) {
       closeModal(modal);
     }
   }, {once: true});
+
   modal.addEventListener("click", event => {
     if (event.target === modal) {
       closeModal(modal);
     }
   });
+  
   modal.classList.add("modal_opened");
 };
 
