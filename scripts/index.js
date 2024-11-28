@@ -107,7 +107,7 @@ function openModal (modal) {
       closeModal(modal);
     }
   });
-  
+
   modal.classList.add("modal_opened");
 };
 
@@ -151,7 +151,7 @@ profileEditButton.addEventListener("click", () => {
   profileModalName.value = profileName.textContent;
   profileModalDescription.value = profileDescription.textContent;
 
-  resetValidation(editModal, [profileModalName, profileModalDescription]);
+  resetValidation(editModal, [profileModalName, profileModalDescription], config);
   openModal(editModal);
 });
 
