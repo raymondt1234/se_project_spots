@@ -39,7 +39,7 @@ const disableButton = (buttonElement, disable, config) => {
     buttonElement.disabled = disable;
     buttonElement.classList.add(config.inactiveButtonClass);
   } else {
-    buttonElement.disabled = false;
+    buttonElement.disabled = disable;
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
@@ -52,9 +52,9 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-const resetValidation = (formElement, inputList) => {
+const resetValidation = (formElement, inputList, config) => {
   inputList.forEach(input => {
-    hideInputError(formElement, input);
+    hideInputError(formElement, input, config);
   });
 };
 
@@ -67,9 +67,9 @@ const setEventListeners = (formElement, config) => {
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
+      checkInputValidity(formElement, inputElement, config);
 
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
