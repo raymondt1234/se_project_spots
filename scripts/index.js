@@ -151,7 +151,7 @@ profileEditButton.addEventListener("click", () => {
   profileModalName.value = profileName.textContent;
   profileModalDescription.value = profileDescription.textContent;
 
-  resetValidation(editModal, [profileModalName, profileModalDescription], config);
+  resetValidation(editModal, [profileModalName, profileModalDescription], settings);
   openModal(editModal);
 });
 
