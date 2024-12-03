@@ -132,8 +132,7 @@ function handleNewPostFormSubmit(event) {
     name: newPostName.value
   }
 
-  const newPostCard = getCardElement(card);
-  cardsList.prepend(newPostCard);
+  renderCard(card);
 
   disableButton(newPostSubmitBtn, true, settings);
   event.target.reset();
