@@ -89,14 +89,12 @@ function handleOpenPreview(event) {
   previewModalImage.alt = previewImage.alt;
   previewModalCaption.textContent = previewImage.alt;
 
-  addEscapeCloseModal(previewModal);
   openModal(previewModal);
 }
 
 function addEscapeCloseModal(modal) {
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") {
-      removeEscapeCloseModal(modal);
       closeModal(modal);
     }
   });
@@ -105,17 +103,18 @@ function addEscapeCloseModal(modal) {
 function removeEscapeCloseModal(modal) {
   document.removeEventListener("keydown", event => {
     if (event.key === "Escape") {
-      removeEscapeCloseModal(modal);
       closeModal(modal);
     }
   });
 };
 
 function openModal (modal) {
+  addEscapeCloseModal(modal);
   modal.classList.add("modal_opened");
 };
 
 function closeModal (modal) {
+  removeEscapeCloseModal(modal);
   modal.classList.remove("modal_opened");
 };
 
@@ -156,14 +155,12 @@ profileEditButton.addEventListener("click", () => {
 
   resetValidation(editModal, [profileModalName, profileModalDescription], settings);
 
-  addEscapeCloseModal(editModal);
   openModal(editModal);
 });
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 newPostButton.addEventListener("click", () => {
-  addEscapeCloseModal(newPostModal);
   openModal(newPostModal);
 });
 
@@ -176,7 +173,7 @@ const modals = document.querySelectorAll('.modal');
 modals.forEach((modal) => {
     modal.addEventListener('mousedown', (event) => {
         if (event.target.classList.contains('modal_opened')) {
-            closeModal(modal);
+          closeModal(modal);
         };
         if (event.target.classList.contains('modal__close-btn')) {
           closeModal(modal);
