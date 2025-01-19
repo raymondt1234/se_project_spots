@@ -1,3 +1,5 @@
+import {enableValidation, resetValidation, disableButton, settings} from "./validation.js";
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -28,6 +30,8 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
 ];
+
+enableValidation(settings);
 
 // Profile
 const profileEditButton = document.querySelector(".profile__edit-btn");
