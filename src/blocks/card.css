@@ -29,7 +29,7 @@
 .card__content {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .card__title {

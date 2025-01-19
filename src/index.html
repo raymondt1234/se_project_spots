@@ -6,19 +6,18 @@
     <meta name="author" content="Raymond Terry" />
     <meta name="description" content="Spots" />
     <meta name="keywords" content="HTML, CSS, JavaScript" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Spots Logo" class="header__logo" />
+        <img id="spots-logo" alt="Spots Logo" class="header__logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            id="profile-avatar"
             alt="Bessie Coleman"
             class="profile__avatar"
           />
@@ -26,11 +25,11 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/pencil.svg" alt="pencil icon" />Edit Profile
+              <img id="pencil-icon" alt="pencil icon" />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
-            <img src="./images/plus.svg" alt="Plus Icon" /> New Post
+            <img id="plus-icon" alt="Plus Icon" /> New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -138,6 +137,5 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script type="module" src="./scripts/index.js" defer></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
-import {enableValidation, resetValidation, disableButton, settings} from "./validation.js";
+import {enableValidation, resetValidation, disableButton, settings} from "../scripts/validation.js";
+import "./index.css";
 
 const initialCards = [
   {
@@ -30,6 +31,20 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
 ];
+
+import spotsLogoSrc from "../images/logo.svg";
+import profileAvatarSrc from "../images/avatar.jpg";
+import pencilIconSrc from "../images/pencil.svg";
+import plusIconSrc from "../images/plus.svg";
+
+const logoImage = document.getElementById("spots-logo");
+logoImage.src = spotsLogoSrc;
+const profileAvatar = document.getElementById("profile-avatar");
+profileAvatar.src = profileAvatarSrc;
+const pencilIcon = document.getElementById("pencil-icon");
+pencilIcon.src = pencilIconSrc;
+const plusIcon = document.getElementById("plus-icon");
+plusIcon.src = plusIconSrc;
 
 enableValidation(settings);
 
