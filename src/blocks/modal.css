@@ -60,7 +60,37 @@
   border-radius: 8px;
 }
 
-.modal__close-btn {
+.modal__form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal__btn {
+  width: 156px;
+  padding: 18px 0;
+  border-radius: 8px;
+  color: #FCF5E5;
+  background-color: #212121;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.modal__form-buttons .modal__submit-btn {
+  color: #000;
+  background-color: #ff3333;
+}
+
+.modal__btn_disabled {
+  opacity: 0.5;
+}
+
+.modal__btn:hover {
+  cursor: pointer;
+}
+
+.modal__close-btn_type_x {
   padding: 0;
   position: absolute;
   top: 32px;
@@ -73,10 +103,15 @@
 }
 
 .modal__close-btn_type_preview {
+  padding: 0;
+  position: absolute;
   top: 0;
   right: -52px;
+  width: 40px;
+  height: 40px;
+  background: transparent url("../images/close-icon-light.svg") center no-repeat;
   opacity: 1;
-  background-image: url("../images/close-icon-light.svg");
+  border: none;
 }
 
 .modal__close-btn:hover {
@@ -127,25 +162,6 @@
   color: #f00;
 }
 
-.modal__submit-btn {
-  width: 156px;
-  padding: 18px 0;
-  border-radius: 8px;
-  color: #FCF5E5;
-  background-color: #212121;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1;
-}
-
-.modal__submit-btn_disabled {
-  opacity: 0.5;
-}
-
-.modal__submit-btn:hover {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
@@ -155,7 +171,7 @@
     padding: 12px;
   }
 
-  .modal__close-btn {
+  .modal__close-btn_type_x {
     top: 12px;
     right: 12px;
   }
@@ -198,7 +214,7 @@
     font-size: 16px;
   }
 
-  .modal__submit-btn {
+  .modal__btn {
     width: 100%;
   }
 }
