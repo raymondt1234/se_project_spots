@@ -234,11 +234,38 @@ function handleNewPostFormSubmit(event) {
     });
 }
 
+function handleSubmit(request, event, loadingText = 'Saving...') {
+  // You need to prevent the default action in any submit handler
+   event.preventDefault();
+
+   // the button is always available inside `event` as `submitter`
+   const submitButton = event.submitter;
+   // fix the initial button text
+   const initialText = submitButton.textContent;
+   // change the button text before requesting
+   setButtonText(true, submitButton, initialText, loadingText);
+   // call the request function to be able to use the promise chain
+   request()
+     .then(() => {
+       // any form should be reset after a successful response
+       // evt.target is the form in any submit handler
+       event.target.reset();
+     })
+       // we need to catch possible errors
+       // console.error is used to handle errors if you don’t have any other ways for that
+     .catch(console.error)
+
+     // and in finally we need to stop loading
+     .finally(() => {
+       setButtonText(false, submitButton, initialText);
+     });
+ }
+
 // Handles Delete Form Submission
 function handleDeleteSubmit(event) {
   event.preventDefault();
 
-  const submitBtn = event.target;
+  const submitBtn = event.submitter;
 
   if (submitBtn.textContent.trim() === "Delete") {
     setButtonText(submitBtn, true, "Delete", "Deleting...");
@@ -246,14 +273,14 @@ function handleDeleteSubmit(event) {
     api
       .deleteCard(selectedCardId)
       .then(() => {
-
         selectedCard.remove();
         closeModal(deleteModal);
+
+        selectedCard = undefined;
+        selectedCardId = undefined;
       })
       .catch(console.error)
       .finally(() => {
-        selectedCard = "";
-        selectedCardId = "";
         setButtonText(submitBtn, false, "Delete", "Deleting...");
       });
   }
@@ -285,7 +312,7 @@ newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
-deleteForm.addEventListener("click", handleDeleteSubmit);
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 profileAvatarButton.addEventListener("click", () => {
   openModal(editAvatarModal);
