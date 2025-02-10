@@ -198,6 +198,7 @@ function handleAvatarFormSubmit(event) {
     .then((data) => {
       profileAvatar.src = data.avatar;
 
+      disableButton(avatarSubmitBtn, true, settings);
       event.target.reset();
       closeModal(editAvatarModal);
     })
@@ -233,33 +234,6 @@ function handleNewPostFormSubmit(event) {
       setButtonText(submitBtn, false);
     });
 }
-
-function handleSubmit(request, event, loadingText = 'Saving...') {
-  // You need to prevent the default action in any submit handler
-   event.preventDefault();
-
-   // the button is always available inside `event` as `submitter`
-   const submitButton = event.submitter;
-   // fix the initial button text
-   const initialText = submitButton.textContent;
-   // change the button text before requesting
-   setButtonText(true, submitButton, initialText, loadingText);
-   // call the request function to be able to use the promise chain
-   request()
-     .then(() => {
-       // any form should be reset after a successful response
-       // evt.target is the form in any submit handler
-       event.target.reset();
-     })
-       // we need to catch possible errors
-       // console.error is used to handle errors if you don’t have any other ways for that
-     .catch(console.error)
-
-     // and in finally we need to stop loading
-     .finally(() => {
-       setButtonText(false, submitButton, initialText);
-     });
- }
 
 // Handles Delete Form Submission
 function handleDeleteSubmit(event) {
@@ -315,6 +289,14 @@ newPostButton.addEventListener("click", () => {
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 profileAvatarButton.addEventListener("click", () => {
+  avatarLink.value = "";
+
+  resetValidation(
+    editAvatarModal,
+    [avatarLink],
+    settings
+  );
+
   openModal(editAvatarModal);
 });
 
